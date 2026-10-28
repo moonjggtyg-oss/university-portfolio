@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الأعمال الأكاديمي الرقمي | يارا بنت هاني</title>
+    <!-- استيراد خطوط عربية فخمة: Amiri الأصيل و Tajawal العصري -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* تعريف متغيرات الألوان والتصميم الثابتة */
+        :root {
+            --bg-color: #F7F4EF;       /* خلفية كريمية ناعمة ودافئة */
+            --card-bg: #FFFFFF;        /* أبيض نقي للبطاقات */
+            --text-primary: #1C1C1C;   /* أسود فاحم داكن وواضح */
+            --text-secondary: #5A5550; /* رمادي ترابي راقي للتفاصيل */
+            --accent-color: #3B302A;   /* بني داكن فخم جداً للتأثيرات */
+            --border-color: #E2DDD5;   /* حدود ناعمة وأنيقة */
+            --shadow-subtle: 0 4px 20px rgba(59, 48, 42, 0.04);
+            --shadow-hover: 0 12px 35px rgba(59, 48, 42, 0.09);
+        }
+
+        /* تنسيقات عامة وإلغاء الهوامش الافتراضية */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.9;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* الحاوية الرئيسة بخصائص فخمة ومتوازنة */
+        .portfolio-wrapper {
+            width: 100%;
+            max-width: 850px;
+            background-color: transparent;
+            margin: 0 auto;
+        }
+
+        /* الترويسة العليا (Header) بتصميم مجلة رقمية فاخرة */
+        header.hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 45px;
+        }
+
+        header.hero-section h1 {
+            font-family: 'Amiri', serif; /* الخط العربي الفخم والمرقع */
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .academic-badge {
+            display: inline-block;
+            background-color: #EFECE6;
+            border: 1px solid var(--border-color);
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-subtle);
+            line-height: 1.8;
+        }
+
+        .hero-description {
+            font-family: 'Amiri', serif; /* استخدام الخط الفخم للنبذة الشخصية */
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* تنسيق أقسام المحتوى */
+        main.projects-container {
+            margin-bottom: 40px;
+        }
+
+        .section-heading {
+            font-family: 'Amiri', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            border-right: 5px solid var(--accent-color);
+            padding-right: 15px;
+            color: var(--text-primary);
+        }
+
+        /* شبكة المشاريع الكلاسيكية المرتبة */
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* بطاقة المشروع الفردية بتصميم دقيق ومخدوم */
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px 32px;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: var(--shadow-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تأثير خط فاخر عند المرور على البطاقة */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-color);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #D1CBC0;
+            background-color: #FFFFFF;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-details h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .project-details p {
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .navigation-arrow {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+            background-color: var(--bg-color);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .navigation-arrow {
+            transform: translateX(-6px);
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+        }
+
+        /* تذييل الصفحة الفاخر */
+        footer.page-footer {
+            text-align: center;
+            margin-top: 70px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-family: 'Amiri', serif;
+        }
+
+        /* التجاوب مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            header.hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .navigation-arrow {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-wrapper">
+        
+        <!-- ترويسة الصفحة الشخصية والأكاديمية -->
+        <header class="hero-section">
+            <h1>معرض الأعمال الأكاديمي الرقمي</h1>
+            <div class="academic-badge">
+                الطالبة: يارا بنت هاني &nbsp;|&nbsp; الرقم الجامعي: 158335<br>
+                المادة: بناء ونشر المواقع بالذكاء الاصطناعي
+            </div>
+            <p class="hero-description">
+                "مرحباً بك في واجهة مشاريعي البرمجية وتصاميمي التفاعلية؛ حيث يلتقي دقة التنظيم البرمجي برقي الإبداع الرقمي."
+            </p>
+        </header>
+
+        <!-- قسم المعارض والأعمال -->
+        <main class="projects-container">
+            <h2 class="section-heading">مستودع المشاريع والمواقع المعتمدة</h2>
+            
+            <div class="cards-grid">
+                
+                <!-- الموقع الأول -->
+                <a href="https://dancing-stroopwafel-d69445.netlify.app" target="_blank" class="project-card">
+                    <div class="project-details">
+                        <h3>من أنا؟ ومن أكون؟</h3>
+                        <p>البورتفوليو الشخصي الشامل الذي يعكس الهوية الرقمية والتعريف الشامل.</p>
+                    </div>
+                    <div class="navigation-arrow">←</div>
+                </a>
+
+                <!-- الموقع الثاني -->
+                <a href="https://xbox-versus-playstat-0rqv.bolt.host" target="_blank" class="project-card">
+                    <div class="project-details">
+                        <h3>Xbox vs PlayStation Arena</h3>
+                        <p>منصة مقارنة حماسية وتصميم تفاعلي يجمع بين عمالقة صناعة الألعاب.</p>
+                    </div>
+                    <div class="navigation-arrow">←</div>
+                </a>
+
+                <!-- الموقع الثالث -->
+                <a href="https://startling-panda-49682e.netlify.app" target="_blank" class="project-card">
+                    <div class="project-details">
+                        <h3>موقع العروض والتصاميم</h3>
+                        <p>موقع ويب متكامل يضم أفكاراً برمجية وتصاميم متميزة تفتح النفس.</p>
+                    </div>
+                    <div class="navigation-arrow">←</div>
+                </a>
+
+                <!-- الموقع الرابع -->
+                <a href="https://moonjggtyg-oss.github.io/resident-evil-sanctuary/" target="_blank" class="project-card">
+                    <div class="project-details">
+                        <h3>ملاذ رزدنت إيفل (Resident Evil Sanctuary)</h3>
+                        <p>صفحة تخصصية غامرة ومصممة خصيصاً لاستعراض عالم ولور رزدنت إيفل الممتع.</p>
+                    </div>
+                    <div class="navigation-arrow">←</div>
+                </a>
+
+                <!-- الموقع الخامس -->
+                <a href="https://singular-buttercream-a71cfb.netlify.app" target="_blank" class="project-card">
+                    <div class="project-details">
+                        <h3>معرض أعمالي الشامل (Netlify)</h3>
+                        <p>الواجهة الإضافية المدمجة التي تضم خلاصة الأعمال والروابط التفاعلية.</p>
+                    </div>
+                    <div class="navigation-arrow">←</div>
+                </a>
+
+            </div>
+        </main>
+
+        <!-- تذييل الحقوق الفخم -->
+        <footer class="page-footer">
+            <p>جميع الحقوق محفوظة © 2026 | صُممت واعتُمِدَت بكل دقة وإتقان بواسطة يارا 🩶</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
